@@ -1,0 +1,21 @@
+{% extends "blog_base.html" %}
+{% load custom_markdown %}
+{% block content %}
+    {% if search_status == 'error' %}
+        <div class="well fade in daytips">
+            <strong>作者水平有限,并没有关于<font color="red"><b>"{{ search_word }}"</b></font>的内容,请换一个词试试</strong>
+        </div>
+    {% endif %}
+    {% if search_status == 'success' %}
+        <div class="well fade in daytips">     
+            <strong>关于<font color="red"><b>"{{ search_word }}"</b></font>的搜索结果一共有<font color="red"><b>"{{ result_length }}"</b></font>条</strong>  
+        </div>
+        {% for blogs in search_result %}
+            <h1><a href="/blog/{{blogs.id}}">{{ blogs.title }}</a></h1>
+            时间：<a>{{ blogs.timestamp | date }}</a>
+            分类：<a class="post-category post-category-js" href="#">{{ blogs.family }}</a>
+            <p>{{ blogs.body |custom_markdown | truncatewords_html:"5" }}</p>
+        {% endfor%}
+    {% endif %}
+{% endblock %}
+
