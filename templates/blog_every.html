@@ -1,0 +1,9 @@
+{% extends "blog_base.html" %}
+{% load custom_markdown %}
+{% block content %}
+    <h1><a>{{ blog_list_two.title }}</a></h1>
+    时间：<a>{{ blog_list_two.timestamp | date }}</a>
+    分类：<a class="post-category post-category-js" href="#">{{ blog_list_two.family }}</a>
+    <p>{{ blog_list_two.body|custom_markdown }}</p>
+    <h2><a href="/blog">返回</a></h2>
+{% endblock %}

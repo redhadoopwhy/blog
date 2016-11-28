@@ -1,0 +1,25 @@
+{% extends "blog_base.html" %}
+{% block content %}
+<style type="text/css">    
+    textarea {
+        resize: none;
+        width: 600px;
+        height: 200px;
+    }
+</style>
+<div class = "posts">
+    <section class="post">
+        <form action={% url 'blog_post_add' %} class="pure-form pure-form-stacked" method="post">     
+        <label><h2><a>标题</a></h2></label>
+        <input class="pure-input-1-4" name="title" type="text">                                  
+        <label><h2><a>分类</a></h2></label>
+        {% for blogs in blog_list_tag %}
+        <a>{{blogs.id}}:{{ blogs.family_name }}</a>
+        {% endfor %}
+        <input class="pure-input-1-5" name="family_id" type="text">
+        <label><h2><a>内容</a></h2></label>
+        <textarea width:400px height:600px name='body'>Be a better me!</textarea>
+        <button class="pure-button" type="submit"><a>提交</a></button>
+        </form>
+    </section>
+{% endblock %}

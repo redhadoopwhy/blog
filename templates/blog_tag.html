@@ -1,0 +1,7 @@
+{% extends "blog_base.html" %}
+{% block content %}
+{% for blogs in blog_list_tag %}
+    <h1><a href="/blog/tag{{blogs.id}}">{{ blogs.family_name }}</a></h1>
+    <p>{{ blogs.body | truncatewords_html:"10" }}</p>
+{% endfor%}
+{% endblock %}

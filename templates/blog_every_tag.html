@@ -1,0 +1,10 @@
+{% extends "blog_base.html" %}
+{% load custom_markdown %}
+{% block content %}
+{% for blogs in blog_list_tag_two %}
+    <h1><a href="/blog/{{blogs.id}}">{{ blogs.title }}</a></h1>
+    时间：<a>{{ blogs.timestamp | date }}</a>
+    分类：<a class="post-category post-category-js" href="#">{{ blogs.family }}</a>
+    <p>{{ blogs.body | custom_markdown |truncatewords_html:"10" }}</p>
+{% endfor %}
+{% endblock %}

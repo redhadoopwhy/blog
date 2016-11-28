@@ -1,0 +1,15 @@
+<html>
+      <style type="text/css">
+        body{color:#efd;background:#453;padding:0 5em;margin:0}
+        h1{padding:2em 1em;background:#675;text-align: center}
+        h2{color:#bf8;border-top:1px dotted #fff;margin-top:2em}
+        p{margin:1em 0}
+      </style>
+
+      <body>
+        <h1>why's blog</h1>
+        <h3>精通各大语言的hello world!</h3>
+        {% block content %}
+        {% endblock %}
+      </body>
+</html>
