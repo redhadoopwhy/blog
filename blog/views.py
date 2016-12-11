@@ -5,9 +5,18 @@ from django.shortcuts import render,render_to_response,HttpResponseRedirect
 from blog.models import BlogPost
 from blog.models import Family
 from datetime import datetime
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 def blog_index(request):					      #主页显示
-    blog_list = BlogPost.objects.all()
+    blog_list_all = BlogPost.objects.all()
+    paginator = Paginator(blog_list_all,10)                           #分页,每页显示10个
+    page = request.GET.get('page')                                    #获取页数
+    try:
+        blog_list = paginator.page(page)
+    except PageNotAnInteger:
+        blog_list = paginator.page(1)
+    except EmptyPage:
+        blog_list = paginator.paginator(paginator.num_pages)
     dic_blog_list = {'blog_list': blog_list}
     return render(request, 'blog.html', dic_blog_list)
 def blog_bond(request,blog_id=''):				      #内容显示
@@ -41,7 +50,7 @@ def blog_post_add(request):
     id= BlogPost.objects.order_by('-timestamp')[0].id                   #查找最新文章的id                      
     return HttpResponseRedirect('/blog/%s' %id)                         #数据输入到数据库这是后台做的事，前端显示该博客的单篇博客详细内容比较合适
 def blog_search(request):                                             #按内容搜索
-    search_word = request.POST['searchword']
+    search_word = request.POST["searchword"]
     blog_list_three = BlogPost.objects.all()
     search_result = []
     for i in blog_list_three:
