@@ -1,10 +1,29 @@
 {% extends "blog_base.html" %}
 {% load custom_markdown %}
 {% block content %}
-{% for blogs in blog_list_tag_two %}
-    <h1><a href="/blog/{{blogs.id}}">{{ blogs.title }}</a></h1>
-    时间：<a>{{ blogs.timestamp | date }}</a>
-    分类：<a class="post-category post-category-js" href="#">{{ blogs.family }}</a>
-    <p>{{ blogs.body | custom_markdown |truncatewords_html:"10" }}</p>
-{% endfor %}
+<div class="pagination">
+    <span class="step-links">
+        {% for blogs in blog_list_tag_two_list %}
+            <h1><a href="/blog/{{blogs.id}}">{{ blogs.title }}</a></h1>
+            时间：<a>{{ blogs.timestamp | date }}</a>
+            分类：<a class="post-category post-category-js" href="#">{{ blogs.family }}</a>
+            <p>{{ blogs.body | custom_markdown |truncatewords_html:"10" }}</p>
+    <br/>
+        {% endfor%}
+        {% if blog_list_tag_two_list.has_previous %}
+            <a href="?page={{ blog_list_tag_two_list.previous_page_number }}">上一页</a>
+        {% endif %}
+            {% for page in blog_list_tag_two_list.paginator.page_range %}
+                {% if page = blog_list_tag_two_list.number %}
+                    <a class='paginator_current' title='当前页:{{ page }}'><span>{{ page }}</span></a>
+                {% else %}
+                    <a class='paginator' href='?page={{ page }}' title='{{ page }}'><span>{{ page }}</span></a>
+                {% endif %}
+            {% endfor %}
+            Page {{ blog_list_tag_two_list.number }} of {{ blog_list_tag_two_list.paginator.num_pages }}
+        {% if blog_list_tag_two_list.has_next %}
+            <a href="?page={{ blog_list_tag_two_list.next_page_number }}">下一页</a>
+        {% endif %}
+    </span>
+</div>
 {% endblock %}

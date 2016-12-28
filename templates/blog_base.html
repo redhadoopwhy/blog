@@ -12,6 +12,7 @@
  	<div id="layout" class="pure-g">                                                                  
     		<div class="sidebar pure-u-1 pure-u-md-1-4">                                                 
        			<div class="header">
+                                <a href="/me"><img src="http://www.whysdomain.com:81/2picdiy2016121418835631.jpg" width="160" height="160" style="position:absolute; left:100px; top:80px; "/></a>
              			<h1 class="brand-title">WHY's Blog</h1>
              			<h2 class="brand-tagline">精通各大语言的Hello World!</h2>
              			<nav class="nav">
@@ -34,18 +35,17 @@
       		</div> 
       
      		<div class="content pure-u-1 pure-u-md-3-4">                                                                                     
-          		<div>                                                                               
-          			</div>
-					{% block content %}
-	        			{% endblock %}
-      				</div>                                                                                  
-  			</div>                                                                                      
-                <div class="footer">  
-                    <div class="pure-menu pure-menu-horizontal pure-menu-open">  
+			{% block content %}
+	        	{% endblock %}
+                    <div class="footer">  
+                        <div class="pure-menu pure-menu-horizontal pure-menu-open">  
                         <ul>  
-                            <li><a href="#">About Me</a></li></span>  
+                            <li><a href="/me">About Me</a></li></span>  
                             <li><a href="https://github.com/redhadoopwhy/blog">GitHub</a></li></span>  
+                            <li><a href="http://www.miitbeian.gov.cn/">京ICP备16062923号</a></li></span>  
                         </ul>  
-                    </div>
+                        </div>
+  	       	    </div>                                                                                      
+  		</div>                                                                                      
 </body>                                                                                     
 </html>

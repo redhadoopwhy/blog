@@ -1,0 +1,7 @@
+{% extends "blog_base.html" %}
+{% load custom_markdown %}
+{% block content %}
+    <h1><a>个人介绍</a></h1>
+    <p> {{ why | custom_markdown }}</p>
+    <h2><a href="/blog">返回</a></h2>
+{% endblock %}

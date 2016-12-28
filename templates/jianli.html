@@ -1,0 +1,16 @@
+{% extends "blog_base.html" %}
+{% load custom_markdown %}
+{% block content %}
+    <h1><a>个人简历</a></h1>
+    <h2><a>个人情况</a></h1>
+    <p> {{ grqk | custom_markdown }}</p>
+    <h2><a>个人能力</a></h1>
+    <p> {{ grnl | custom_markdown }}</p>
+    <h2><a>工作经历</a></h1>
+    <p> {{ gzjl | custom_markdown }}</p>
+    <h2><a>自我评价</a></h1>
+    <p> {{ zwpj | custom_markdown }}</p>
+    <h2><a>个人项目</a></h1>
+    <p> {{ grxm | custom_markdown }}</p>
+    <h2><a href="/blog">返回</a></h2>
+{% endblock %}

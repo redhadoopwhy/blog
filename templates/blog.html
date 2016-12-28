@@ -16,6 +16,13 @@
         {% if blog_list.has_previous %}
             <a href="?page={{ blog_list.previous_page_number }}">上一页</a>
         {% endif %}
+            {% for page in blog_list.paginator.page_range %}
+                {% if page = blog_list.number %}
+                    <a class='paginator_current' title='当前页:{{ page }}'><span>{{ page }}</span></a>
+                {% else %}
+                    <a class='paginator' href='?page={{ page }}' title='{{ page }}'><span>{{ page }}</span></a>
+                {% endif %}
+            {% endfor %}
             Page {{ blog_list.number }} of {{ blog_list.paginator.num_pages }}
         {% if blog_list.has_next %}
             <a href="?page={{ blog_list.next_page_number }}">下一页</a>

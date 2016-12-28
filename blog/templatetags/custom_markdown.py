@@ -12,7 +12,7 @@ register = template.Library()  # 自定义filter时必须加上
 @register.filter(is_safe=True)  # 注册template filter
 @stringfilter  # 希望字符串作为参数
 def custom_markdown(value):
-    extensions = ["nl2br","extra","abbr","attr_list","def_list","tables",]
+    extensions = ["nl2br","extra","abbr","attr_list","def_list","tables","fenced_code","footnotes","smart_strong","admonition","smarty","meta","sane_lists","wikilinks",]
     return mark_safe(markdown.markdown(force_unicode(value),
                                        extensions,
                                        safe_mode=True,
