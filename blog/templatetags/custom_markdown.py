@@ -1,20 +1,18 @@
 #coding=utf-8
-import markdown
+import markdown2
+
 from django import template
 from django.template.defaultfilters import stringfilter
 from django.utils.encoding import force_unicode
 from django.utils.encoding import force_text
 from django.utils.safestring import mark_safe
 
-register = template.Library()  # 自定义filter时必须加上
+register = template.Library()
 
-
-@register.filter(is_safe=True)  # 注册template filter
-@stringfilter  # 希望字符串作为参数
+@register.filter(is_safe=True)
+@stringfilter
 def custom_markdown(value):
-    extensions = ["nl2br","extra","abbr","attr_list","def_list","tables","fenced_code","footnotes","smart_strong","admonition","smarty","meta","sane_lists","wikilinks",]
-    return mark_safe(markdown.markdown(force_unicode(value),
-                                       extensions,
-                                       safe_mode=True,
-                                       enable_attributes=False,
-                                       ))
+    return mark_safe(markdown2.markdown(force_text(value),
+                                        extras=["code-friendly","toc","fenced-code-blocks", "cuddled-lists", "metadata", "tables", "spoiler"]
+                                        )
+                                        )
