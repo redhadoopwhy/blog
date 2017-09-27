@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title> Welcome to Shifone Homepage </title>
+    <meta name="author" content="Shifone"/>
+    <meta name="description" content=""/>
+    <meta name="keywords" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://www.cuishifeng.cn/css/404.css">
+
+</head>
+<body>
+
+<div class="contanier" id="contanier" >
+    <canvas class="animation" width="1840" height="669" style="opacity: 1;"></canvas>
+    <div class="content">
+        <p class="error">Stack Overflow</p>
+        <p class="info">木有空设计主页了，您或许需要以下内容:</p>
+        <div class="nav">
+            <a href="http://www.cuishifeng.cn/go/card"> 信用卡优惠 </a>
+            <a href="http://jquery.cuishifeng.cn" >jQuery API</a>
+        </div>
+    </div>
+</div>
+
+
+<script src="http://www.cuishifeng.cn/js/jquery-2.1.3.js"></script>
+<script src="http://www.cuishifeng.cn/js/404.js"></script>
+<script >
+
+    $(function(){
+        $("#contanier").engine();
+        $(window).bind("load resize", function(event) {
+            $(".interface").css({
+                "margin": $(window).height() + "px 0 0 0"
+            });
+        });
+        $(window).bind("load resize scroll", function(event) {
+            $(".interface").effect();
+        });
+
+
+
+    });
+
+</script>

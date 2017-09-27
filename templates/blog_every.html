@@ -1,9 +1,24 @@
 {% extends "blog_base.html" %}
 {% load custom_markdown %}
+{% block css %}
+    .ppp p{
+	font-size:40px;
+    }
+{% endblock %}
 {% block content %}
-    <h1><a>{{ blog_list_two.title }}</a></h1>
+    <div class="ppp">
+        <p>{{ blog_list_two.title }}<p>
+    </div>
     时间：<a>{{ blog_list_two.timestamp | date }}</a>
-    分类：<a class="post-category post-category-js" href="#">{{ blog_list_two.family }}</a>
+    分类：<a class="post-category post-category-js">{{ blog_list_two.family }}</a>
+    <p>目录：</p>
+    <div class="AnchorContent" id="AnchorContent">
+        <!-- 显示目录 -->
+    </div>
     <p>{{ blog_list_two.body | custom_markdown }}</p>
+    <!-- 
     <h2><a href="/blog/?page=1">返回</a></h2>
+    -->
+{% endblock %}
+{% block right %}
 {% endblock %}

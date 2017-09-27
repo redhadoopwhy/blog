@@ -6,7 +6,7 @@
         {% for blogs in blog_list %}
         <h1><a href="/blog/{{blogs.id}}">{{ blogs.title }}</a></h1>
         时间：<a>{{ blogs.timestamp | date:'Y M d'}}</a>
-        分类：<a class="post-category post-category-js" href="#">{{ blogs.family }}</a>
+        分类：<a class="post-category post-category-js">{{ blogs.family }}</a>
         <p>{{ blogs.body |custom_markdown | truncatewords_html:"5" }}</p>
         <!--   
         <a class="pure-button"  href="/blog/{{blogs.id}}">Read More >>></a>   

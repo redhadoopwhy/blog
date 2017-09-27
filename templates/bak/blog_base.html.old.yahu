@@ -1,0 +1,53 @@
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">                         
+<meta name="description" content="show a blog">
+	<title>why's blog</title>
+	<link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/pure-min.css">
+	<link rel="stylesheet" href="http://picturebag.qiniudn.com/blog.css">                            
+	<link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/grids-responsive-min.css">
+	<link type="text/css" rel="stylesheet" href="http://picturebag.qiniudn.com/monokai.css">
+        <link rel="stylesheet" href="http://img.whysdomain.com/markdown2/monokai_sublime.min.css">
+        <script src="http://img.whysdomain.com/markdown2/highlight.min.js"></script><script>hljs.initHighlightingOnLoad();</script>
+        <link rel="shortcut icon" href="http://img.whysdomain.com/www.ico" type="image/x-icon">
+ 	<div id="layout" class="pure-g">                                                                  
+    		<div class="sidebar pure-u-1 pure-u-md-1-4">                                                 
+       			<div class="header">
+                                <a href="/me"><img src="http://img.whysdomain.com/2picdiy2016121418835631.jpg" width="160" height="160" style="position:absolute; left:100px; top:80px; "/></a>
+             			<h1 class="brand-title">WHY's Blog</h1>
+             			<h2 class="brand-tagline">精通各大语言的Hello World!</h2>
+             			<nav class="nav">
+                  			<ul class="nav-list">
+                      				<li class="nav-item">
+                          				<a class="pure-button" href="/">why's HOME</a>
+                      				</li>
+                     				<li class="nav-item">                          
+                          				<a class="pure-button" href="/blog">why's Blog</a>
+                      				</li>                                          
+                      				<li class="nav-item">                          
+                          				<a class="pure-button" href="/blog/tag">blog's tag</a>
+                      				</li>                                          
+                                                <li class="nav-item">
+                                                        <a class="pure-button" href="/blog/post">add a blog</a>
+                                                </li>
+                  			</ul>
+              			</nav>      
+          		</div>      
+      		</div> 
+      
+     		<div class="content pure-u-1 pure-u-md-3-4">                                                                                     
+			{% block content %}
+	        	{% endblock %}
+                    <div class="footer">  
+                        <div class="pure-menu pure-menu-horizontal pure-menu-open">  
+                        <ul>  
+                            <li><a href="/me">About Me</a></li></span>  
+                            <li><a href="https://github.com/redhadoopwhy/blog">GitHub</a></li></span>  
+                            <li><a href="http://www.miitbeian.gov.cn/">京ICP备16062923号</a></li></span>  
+                        </ul>  
+                        </div>
+  	       	    </div>                                                                                      
+  		</div>                                                                                      
+</body>                                                                                     
+</html>

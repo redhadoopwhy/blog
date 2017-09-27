@@ -18,7 +18,8 @@ def blog_index(request):					      #主页显示
         blog_list = paginator.page(1)
     except EmptyPage:
         blog_list = paginator.paginator(paginator.num_pages)
-    dic_blog_list = {'blog_list': blog_list}
+    blog_list_tag = Family.objects.all()
+    dic_blog_list = {'blog_list': blog_list,'blog_list_tag':blog_list_tag}
     return render(request, 'blog.html', dic_blog_list)
 def blog_bond(request,blog_id=''):				      #内容显示
     blog_list_two = BlogPost.objects.get(id=blog_id)

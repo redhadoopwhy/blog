@@ -21,8 +21,10 @@ SECRET_KEY = '9&mxhd8+lxk#45n0*7k4tnc%h89yf!6oi0n^kji6=qr2!b6vw6'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+#DEBUG = False
 
 TEMPLATE_DEBUG = True
+#TEMPLATE_DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
@@ -42,7 +44,7 @@ INSTALLED_APPS = (
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-#    'django.middleware.csrf.CsrfViewMiddleware',
+    #'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -86,9 +88,11 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR,'static'),
-)
+STATIC_ROOT = '/data/code/blog/static/'
+
+#STATICFILES_DIRS = (
+#    os.path.join(BASE_DIR,'static'),
+#)
 
 
 # Template dir

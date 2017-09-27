@@ -1,53 +1,525 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">                         
-<meta name="description" content="show a blog">
-	<title>why's blog</title>
-	<link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/pure-min.css">
-	<link rel="stylesheet" href="http://picturebag.qiniudn.com/blog.css">                            
-	<link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/grids-responsive-min.css">
-	<link type="text/css" rel="stylesheet" href="http://picturebag.qiniudn.com/monokai.css">
-<link rel="stylesheet" href="http://cdn.bootcss.com/highlight.js/8.0/styles/monokai_sublime.min.css">
-<script src="http://cdn.bootcss.com/highlight.js/8.0/highlight.min.js"></script><script>hljs.initHighlightingOnLoad();</script>
-        <link rel="shortcut icon" href="http://img.whysdomain.com/www.ico" type="image/x-icon">
- 	<div id="layout" class="pure-g">                                                                  
-    		<div class="sidebar pure-u-1 pure-u-md-1-4">                                                 
-       			<div class="header">
-                                <a href="/me"><img src="http://img.whysdomain.com/2picdiy2016121418835631.jpg" width="160" height="160" style="position:absolute; left:100px; top:80px; "/></a>
-             			<h1 class="brand-title">WHY's Blog</h1>
-             			<h2 class="brand-tagline">精通各大语言的Hello World!</h2>
-             			<nav class="nav">
-                  			<ul class="nav-list">
-                      				<li class="nav-item">
-                          				<a class="pure-button" href="/">why's HOME</a>
-                      				</li>
-                     				<li class="nav-item">                          
-                          				<a class="pure-button" href="/blog">why's Blog</a>
-                      				</li>                                          
-                      				<li class="nav-item">                          
-                          				<a class="pure-button" href="/blog/tag">blog's tag</a>
-                      				</li>                                          
-                                                <li class="nav-item">
-                                                        <a class="pure-button" href="/blog/post">add a blog</a>
-                                                </li>
-                  			</ul>
-              			</nav>      
-          		</div>      
-      		</div> 
-      
-     		<div class="content pure-u-1 pure-u-md-3-4">                                                                                     
-			{% block content %}
-	        	{% endblock %}
-                    <div class="footer">  
-                        <div class="pure-menu pure-menu-horizontal pure-menu-open">  
-                        <ul>  
-                            <li><a href="/me">About Me</a></li></span>  
-                            <li><a href="https://github.com/redhadoopwhy/blog">GitHub</a></li></span>  
-                            <li><a href="http://www.miitbeian.gov.cn/">京ICP备16062923号</a></li></span>  
-                        </ul>  
-                        </div>
-  	       	    </div>                                                                                      
-  		</div>                                                                                      
-</body>                                                                                     
+    <meta charset="UTF-8">
+    <title>why's blog</title>
+    <link rel="shortcut icon" href="http://img.whysdomain.com/static/www.ico" type="image/x-icon">
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/pure-min.css">
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/grids-responsive-min.css">
+    <link rel="stylesheet" href="http://img.whysdomain.com/static/monokai_sublime.min.css"><!--markdown依赖 -->
+    <script src="http://img.whysdomain.com/static/highlight.min.js"></script><!--markdown依赖 -->
+    <script src="http://img.whysdomain.com/static/jquery-1.8.2.js"></script>
+    <script type="text/javascript" src="http://tajs.qq.com/stats?sId=63730990" charset="UTF-8"></script>
+    <script>
+	hljs.initHighlightingOnLoad(); /* markdown依赖 */
+    </script>
+    <style>
+	/* body配置 */
+        body{
+            margin: 0px;
+            background-color: #ddd; /* 背景颜色 */
+        }
+	/* body配置 */
+
+	/* 强制markdown表格格式 */
+	table{
+	    border-left: 1px solid #000;
+	    border-top: 1px solid #000;
+	    border-right: 1px solid #000;
+	    border-bottom:1px solid #000
+	}
+	table th{
+	    border-left: 1px solid #000;
+	    border-top: 1px solid #000;
+	    border-right: 1px solid #000;
+	    border-bottom:1px solid #000
+	}
+	table td{
+	    border-left: 1px solid #000;
+	    border-top: 1px solid #000;
+	    border-right: 1px solid #000;
+	    border-bottom:1px solid #000
+	}
+	/* 强制markdown表格格式 */
+
+	/* 顶部配置 */
+        .pg-header ul{
+            list-style: none;
+            margin: 0px;
+        }
+        .pg-header ul li{
+            float: left;
+        }
+        .pg-header{
+            background-color: #CC8156;
+            height: 44px;
+        }
+        .w{
+            width: 1300px;
+            margin: 0 auto;
+        }
+	.w * {/* 固定右边边框 */
+	    box-sizing: border-box;
+	}
+        .pg-header .logo{
+            float: left;
+        }
+        .pg-header .menu{
+            float: left;
+            line-height: 44px;
+        }
+        .pg-header .menu ul li a{
+            color: white;
+            padding: 0 20px;
+            text-decoration: none;
+        }
+        .pg-header .menu ul li:hover{
+            background-color: #f4511e;
+        }
+        .acction{
+            float: right;
+        }
+        .search{
+            float: right;
+        }
+        .w img{
+            margin-top: 6px;
+        }
+	/* 顶部配置 */
+
+	/* 中间左部配置 */
+        .content-l{
+            width: 1150px;
+            background-color: #F5FFFA;
+            float: left;
+	    padding:15px 10px 15px 10px;
+            font-family : 微软雅黑,宋体;
+            font-size : 1em;
+        }
+	.content-l img{ /*markdown 图片大小*/
+	    max-width: 1100px;
+            left: 25px;
+	    height: auto;
+	}
+	.content-l a { /*标题a标签格式*/
+	    text-decoration: none;
+	    color: rgb(61, 146, 201);
+	}	
+	/* 字体强制生效 */
+	.post-category {
+	    margin: 0 0.1em;
+	    padding: 0.3em 1em;
+	    background: #df2d4f;
+	    font-size: 80%;
+	    color:white !important;
+	}
+	/* 中间左部配置 */
+
+	/* 中间右部配置 */
+        .content-r{
+	    text-align: center;
+            width: 150px;
+            background-color: #ddd;
+            float: right;
+            font-family : 微软雅黑,宋体;
+            font-size : 1em;
+        }
+	/* 中间右部配置 */
+
+	/* 导航div格式 */
+        .AnchorContent div {
+            margin: 0px;
+            padding: 0px;;
+            color: rgb(61, 146, 201);
+            text-decoration: none;//去下划线
+        }
+        .AnchorContent div:hover{
+	    cursor: pointer;        /*小手*/
+	}
+	/* 导航div格式 */
+
+        .clearfix:after{
+            content: '111';
+            display: block;
+            clear: both;
+            visibility: hidden;
+            height: 0;
+        }
+
+	/* 底部配置 */
+        .pg-footer{
+            background-color: #CC8156;
+            height: 44px;
+        }
+        .pg-footer ul{
+            list-style: none;
+	    text-align: center;
+            margin: 0px;
+        }
+        .pg-footer ul li{
+            float: left;
+        }
+        .pg-footer .menu{
+            line-height: 44px;
+        }
+        .pg-footer .menu ul li a{
+            color: white;
+            padding: 0 20px;
+            text-decoration: none;
+        }
+        .pg-footer .menu ul li:hover{
+            background-color: #f4511e;
+        }
+	/* 底部配置 */
+
+	/* 按钮配置 */
+        .button {
+              display: inline-block;
+              border-radius: 2px;
+              background-color: #f4511e;
+              border: none;
+              color: #FFFFFF;
+              text-align: center;
+              font-size: 14px;
+              padding: 10px;
+              width: 100px;
+              transition: all 0.5s;
+              cursor: pointer;
+              margin: 2.5px;
+        }
+
+        .button span {
+              cursor: pointer;
+              display: inline-block;
+              position: relative;
+              transition: 0.5s;
+        }
+        .button span:after {
+              content: '»';
+              position: absolute;
+              opacity: 0;
+              top: 0;
+              right: -10px;
+              transition: 0.5s;
+        }
+        .button:hover span {
+              padding-right: 12px;
+        }
+        .button:hover span:after {
+              opacity: 1;
+              right: 0;
+        }
+	/* 按钮配置 */
+
+        input{
+            height: 30px;
+            width: 170px;
+            padding-right: 30px;
+            margin-top: 5px;
+        }
+
+	/* 返回顶部 */
+        .go-top{
+            position: fixed;
+        }
+
+        .hide{
+            display: none;
+        }
+
+	.juzhong{
+	    margin:0 auto;
+	}
+
+
+	/* 加载 */
+	.main-loading {
+	    position: fixed;
+	    left: 0;
+	    top: 0;
+	    right: 0;
+	    bottom: 0;
+	    width: 100%;
+	    height: 100%;
+	    background: #ccc;
+	    z-index: 99
+	}
+
+	.main-loading .loading-con {
+	    position: absolute;
+	    left: 50%;
+	    top: 50%;
+	    margin-left: -40px;
+	    margin-top: -40px;
+	    width: 96px;
+	    height: 96px
+	}
+
+	.main-loading .loading-con img {
+	    position: absolute;
+	    top: 8px;
+	    left: 8px;
+	    width: 80px;
+	    height: 80px;
+	    -webkit-border-radius: 50%;
+	    border-radius: 50%
+	}		
+
+	.main-loading .loading-circle {
+	    width: 80px;
+	    height: 80px;
+	    border-top: 8px solid #11994b;
+	    border-right: 8px solid #f2a808;
+	    border-bottom: 8px solid #2399e7;
+	    border-left: 8px solid #c0392b;
+	    -webkit-border-radius: 50%;
+ 	    border-radius: 50%;
+	    -webkit-animation: spin 1s infinite linear;
+	    -moz-animation: spin 1s infinite linear;
+	    animation: spin 1s infinite linear
+	}
+
+	@keyframes spin {
+	    0% {
+		-webkit-transform: rotate(0deg);
+		-moz-transform: rotate(0deg);
+		transform: rotate(0deg)
+	    }
+	    100% {
+		-webkit-transform: rotate(360deg);
+		-moz-transform: rotate(360deg);
+		transform: rotate(360deg)
+	    }  
+	}
+	/* 加载 */
+
+
+	/* 小火箭 */
+	.totop{
+             position:fixed;
+             right:25px;
+             bottom:60px;
+             display:block;
+             width:26px;
+             height:62px;
+             background:url(http://img.whysdomain.com/static/rocket.jpg) no-repeat 0 0;
+             -webkit-transition: all 0.2s ease-in-out;
+        }
+	.totop:hover{
+            background:url(http://img.whysdomain.com/static/rocket.jpg) no-repeat 0 -62px;
+        }
+	/* 小火箭 */
+        {% block css %}
+        {% endblock %}
+
+    </style>
+</head>
+<body class="loading-process" onscroll="Func();">
+<div class="main-loading" id="main-loading" >
+    <div class="loading-con">
+        <div class="loading-circle"></div>
+        <img src="http://img.whysdomain.com/static/2picdiy2016121418835631.jpg" title="jquery api" alt="jquery api">
+    </div>
+</div>
+<!--加载js后显示 -->
+<div class="main-container">
+<div id="main-wraper" class="main-wraper">
+<div id="col-list"> 
+<!--加载js后显示 -->
+    <div class="pg-header">
+        <div class="w">
+            <div class="logo">
+                <a href="https://www.whysdomain.com"><img src="http://img.whysdomain.com/static/whysdomain.PNG" height="30px"></a>
+            </div>
+            <div class="menu">
+                <ul>
+                    <li><a href="/blog">Blog</a></li>
+                    <li><a href="/blog/tag">Tag</a></li>
+                    <li><a href="/blog/post">Add</a></li>
+                    <li><a href="/admin">Admin</a></li>
+                </ul>
+            </div>
+            <div class="search">
+                <form method="get" target="_blank" action="http://www.baidu.com/s">
+                    <ul>
+                        <li><input name="word" type="text" ></li>
+                        <li><button class="button" style="vertical-align:middle" type="submit"><span>Baidu一下</span></button></li>
+                    </ul>
+                </form>
+            </div>
+            <div class="search">
+                <form action={% url 'blog_search' %} method="post">
+                    <ul>
+                        <li><input  name="searchword" type="text"></li>
+                        <li><button class="button" style="vertical-align:middle" type="submit" ><span>站内搜索 </span></button></li>
+                    </ul>
+                </form>
+            </div>
+            <!--<div class="acction">-->
+                <!--<ul>-->
+                    <!--<li><a href="http://whysdomain.com">登录</a></li>-->
+                    <!--<li><a href="http://whysdomain.com">注册</a></li>-->
+                <!--</ul>-->
+            <!--</div>-->
+        </div>
+    </div>
+    <div class="pg-body">
+        <div class="w clearfix">
+            <div class="content-l">
+                <div class="document-main">
+                    <div class="main-content">
+                        {% block content %}
+                        {% endblock %}
+                    </div>
+                </div>
+            </div>
+            <div class="content-r">
+                <a href="mailto:why@whysdomain.com"><img src="http://image.whysdomain.com/static/MailBox_48px_1183876_easyicon.net.png"></a>
+                <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=93216193&site=qq&menu=yes"><img src="http://image.whysdomain.com/static/qq_48px_1164430_easyicon.net.png" alt="点击这里给我发消息" title="点击这里给我发消息"/></a>
+                <aside id="wp_flashtime-widget" class="widget WP_FlashTime_2009_widget">
+                    <h3 class="widget-title juzhong">当前时间</h3>				
+		    <script type="text/javascript" src="http://47.94.235.135/wp-content/plugins/wp-flashtime-widget/swfobject.js"></script>
+		    <script type="text/javascript">swfobject.registerObject("FlashTime", "8.0.0", "http://47.94.235.135/wp-content/plugins/wp-flashtime-widget/expressInstall.swf");</script>
+		    <center>
+			<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="140" height="40" id="FlashTime" align="middle">
+			<param name="movie" value="http://47.94.235.135/wp-content/plugins/wp-flashtime-widget/flash/wp-clock-20.swf" />
+			<param name="menu" value="false" />
+			<param name="wmode" value="transparent" />
+			<param name="allowscriptaccess" value="always" />
+			<!--[if !IE]>-->
+			<object type="application/x-shockwave-flash" data="http://47.94.235.135/wp-content/plugins/wp-flashtime-widget/flash/wp-clock-20.swf" width="140" height="40" align="middle">
+			<param name="menu" value="false" />
+			<param name="wmode" value="transparent" />
+			<param name="allowscriptaccess" value="always" />
+			</object>
+			<!--<![endif]-->
+			</object>
+		</center>	        
+		</aside>
+<object type="application/x-shockwave-flash" style="outline:none;" data="http://cdn.abowman.com/widgets/hamster/hamster.swf?up_bodyColor=f0e9cc&amp;up_feetColor=D4C898&amp;up_eyeColor=000567&amp;up_wheelSpokeColor=DEDEDE&amp;up_wheelColor=FFFFFF&amp;up_waterColor=E0EFFF&amp;up_earColor=b0c4de&amp;up_wheelOuterColor=FF4D4D&amp;up_snoutColor=F7F4E9&amp;up_bgColor=F0E4E4&amp;up_foodColor=cba920&amp;up_wheelCenterColor=E4EB2F&amp;up_tailColor=E6DEBE&amp;" width="200" height="160">
+<param name="movie" value="http://cdn.abowman.com/widgets/hamster/hamster.swf?up_bodyColor=f0e9cc&amp;up_feetColor=D4C898&amp;up_eyeColor=000567&amp;up_wheelSpokeColor=DEDEDE&amp;up_wheelColor=FFFFFF&amp;up_waterColor=E0EFFF&amp;up_earColor=b0c4de&amp;up_wheelOuterColor=FF4D4D&amp;up_snoutColor=F7F4E9&amp;up_bgColor=F0E4E4&amp;up_foodColor=cba920&amp;up_wheelCenterColor=E4EB2E&amp;up_tailColor=E6DEBE&amp;">
+<param name="AllowScriptAccess" value="always">
+<param name="wmode" value="opaque"></object>
+                <a href="http://www.louisvv.com/">火眼征信大数据工程师闫大佬</a>
+                {% block right %}
+                {% endblock %}
+            </div>
+        </div>
+    </div>
+    <div class="pg-footer">
+        <div class="w">
+            <div class="menu">
+                <ul>
+                    <li><a href="/me">About Me</a></li>
+                    <!--<li><a href="https://github.com/redhadoopwhy/blog">GitHub</a></li>-->
+                    <li><a>京ICP备16062923号</a></li>
+                    <li><a>Copyright&copy;why 2016 - 2017  All rights reserved.</a></li>
+                    <li><a>托管于阿里云主机&七牛云存储</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="go-top hide" id="i1">
+        <a href="#" onclick="gotoTop();return false;" class="totop"></a>
+	<!-- 回到顶部   
+	<a href="javascript:void(0);" onclick="Gotop();" >返回顶部</a>     
+	-->
+    </div>
+
+</div><!-- col-list end --><!--加载js后显示 -->
+</div><!-- main-wraper end --><!--同上 -->
+</div><!-- main -container end --><!--同上 -->
+
+<script src="http://img.whysdomain.com/static/waitting1.js"></script><!-- 同上 -->
+<script src="http://img.whysdomain.com/static/waitting2.js"></script><!-- 同上 -->
+<script>
+
+/* 回到顶部 */
+    function Func() {
+        var scrollTop = document.body.scrollTop;
+        var ii = document.getElementById('i1');
+        if(scrollTop > 400){
+            ii.classList.remove('hide');
+        }else{
+            ii.classList.add('hide');
+        }
+    }
+    function Gotop() {
+        document.body.scrollTop = 0;
+    }
+/* 回到顶部 */
+
+/* 生成目录 */
+/* 原始代码
+    $(".main-content").find("h1,h2,h3,h4,h5,h6").each(function(i,item){
+        var tag = $(item).get(0).nodeName.toLowerCase();
+            $(item).attr("id","wow"+i);
+            $("#AnchorContent").append('<li><a class="new'+tag+' anchor-link" onclick="return false;" href="#" link="#wow'+i+'">'+$(this).text()+'</a></li>');
+            $(".newh1").css({"margin-left":0,"font-size":"20px","font-weight":"bold"});
+            $(".newh2").css({"margin-left":10,"font-size":"18px","font-weight":"bold"});
+            $(".newh3").css({"margin-left":20,"font-size":"16px"});
+            $(".newh4").css({"margin-left":30,"font-size":"14px"});
+    });
+*/
+    $(".main-content").find("h1,h2,h3,h4,h5,h6").each(function(i,item){
+        var tag = $(item).get(0).nodeName.toLowerCase();
+        $(item).attr("id","wow"+i);
+        $("#AnchorContent").append('<div class="new'+tag+' anchor-link" onclick="return false;" link="#wow'+i+'">'+$(this).text()+'</div>');
+        $(".newh1").css({"margin-left":0,"font-size":"25px","font-weight":"bold"});
+        $(".newh2").css({"margin-left":15,"font-size":"21px"});
+        $(".newh3").css({"margin-left":30,"font-size":"18px"});
+        $(".newh4").css({"margin-left":45,"font-size":"16px"});
+        $(".newh5").css({"margin-left":60,"font-size":"15px"});
+    });
+
+    $(".anchor-link").click(function(){
+        $("html,body").animate({scrollTop: $($(this).attr("link")).offset().top}, 600);
+    })
+/* 生成目录 */
+
+/* 小火箭 */
+/**
+* @param acceleration 速度
+* @param stime 时间间隔 (毫秒)
+**/
+   function gotoTop(acceleration,stime) {
+      acceleration = acceleration || 0.1;
+      stime = stime || 10;
+      var x1 = 0;
+      var y1 = 0;
+      var x2 = 0;
+      var y2 = 0;
+      var x3 = 0;
+      var y3 = 0;
+      if (document.documentElement) {
+          x1 = document.documentElement.scrollLeft || 0;
+          y1 = document.documentElement.scrollTop || 0;
+      }
+      if (document.body) {
+          x2 = document.body.scrollLeft || 0;
+          y2 = document.body.scrollTop || 0;
+      }
+      var x3 = window.scrollX || 0;
+      var y3 = window.scrollY || 0;
+   
+      // 滚动条到页面顶部的水平距离
+      var x = Math.max(x1, Math.max(x2, x3));
+      // 滚动条到页面顶部的垂直距离
+      var y = Math.max(y1, Math.max(y2, y3));
+   
+      // 滚动距离 = 目前距离 / 速度, 因为距离原来越小, 速度是大于 1 的数, 所以滚动距离会越来越小
+      var speeding = 1 + acceleration;
+      window.scrollTo(Math.floor(x / speeding), Math.floor(y / speeding));
+   
+      // 如果距离不为零, 继续调用函数
+      if(x > 0 || y > 0) {
+          var run = "gotoTop(" + acceleration + ", " + stime + ")";
+          window.setTimeout(run, stime);
+      }
+   }
+/* 小火箭 */
+</script>
+</body>
 </html>
