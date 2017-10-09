@@ -10,7 +10,7 @@ def jianli(request):
     grxm = "- 个人博客:http://www.whysdomain.com/blog"
     return render(request,'jianli.html',{'grqk':grqk,'grnl':grnl,'gzjl':gzjl,'zwpj':zwpj,'grxm':grxm})
 def me(request):
-    why = "- 姓名：王宏宇\n- 英文简写：why\n- 研究方向：web服务，python自动化运维\n- 个人规划：成为一个Devops\n"
+    why = "- 姓名：王宏宇\n- 英文简写：why\n- 工作内容：业务运维，python自动化运维\n- 个人规划：成为一个DevOps\n"
     work = " 时间 | 履历 \n---|---\n2016年4月至2017年5月 | 就职于北京红象云腾系统技术有限公司\n2017年5月至今 | 就职于北京醋溜网络科技有限公司"
     return render(request,'me.html',{'why':why,'work':work})
 def page_404(request):

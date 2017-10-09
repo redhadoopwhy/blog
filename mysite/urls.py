@@ -14,4 +14,5 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     url(r'^jianli', 'mysite.views.jianli'),
     url(r'^me', 'mysite.views.me'),
+    url(r'^404$', 'mysite.views.page_404'),
 )
