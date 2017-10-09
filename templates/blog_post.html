@@ -13,10 +13,11 @@
         <label><h2><a>标题</a></h2></label>
         <input name="title" type="text">                                  
         <label><h2><a>分类</a></h2></label>
+        <select name="family_id">
         {% for blogs in blog_list_tag %}
-        <a>{{blogs.id}}:{{ blogs.family_name }}</a>
+        <option value={{blogs.id}}>{{ blogs.family_name }}</option>
         {% endfor %}
-        <input name="family_id" type="text">
+        </select>
         <label><h2><a>内容</a></h2></label>
         <textarea width:400px height:600px name='body'>Be a better me!</textarea>
         <button type="submit"><a>提交</a></button>
