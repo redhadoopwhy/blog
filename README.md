@@ -4,4 +4,4 @@
 - markdown2	2.3.4
 
 
-实际效果参考[链接](https://github.com/redhadoopwhy/blog)
+实际效果参考[链接](http://blog.whysdomain.com/blog/)
