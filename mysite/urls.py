@@ -3,8 +3,11 @@ from django.conf.urls import patterns, include, url
 from django.contrib import admin
 admin.autodiscover()
 
-handler404 = 'blog.views.page_404'
-handler500 = 'blog.views.page_500'
+from mysite.views import page_404
+
+#handler404 = 'blog.views.page_404'
+#handler500 = 'blog.views.page_500'
+handler500 = page_404
 
 urlpatterns = patterns('',
     # Examples:

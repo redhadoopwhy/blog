@@ -314,6 +314,14 @@
         {% block css %}
         {% endblock %}
 
+	/* 高亮代码滚动条 */
+	.hljs{
+	    margin: 1px;
+            /* overflow-x: scroll; */
+	    overflow-x: auto;
+	}
+
+
     </style>
 </head>
 <body class="loading-process" onscroll="Func();">
@@ -379,30 +387,7 @@
             <div class="content-r">
                 <a href="mailto:why@whysdomain.com"><img src="http://image.whysdomain.com/static/MailBox_48px_1183876_easyicon.net.png"></a>
                 <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=93216193&site=qq&menu=yes"><img src="http://image.whysdomain.com/static/qq_48px_1164430_easyicon.net.png" alt="点击这里给我发消息" title="点击这里给我发消息"/></a>
-                <aside id="wp_flashtime-widget" class="widget WP_FlashTime_2009_widget">
-                    <h3 class="widget-title juzhong">当前时间</h3>				
-		    <script type="text/javascript" src="http://47.94.235.135/wp-content/plugins/wp-flashtime-widget/swfobject.js"></script>
-		    <script type="text/javascript">swfobject.registerObject("FlashTime", "8.0.0", "http://47.94.235.135/wp-content/plugins/wp-flashtime-widget/expressInstall.swf");</script>
-		    <center>
-			<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="140" height="40" id="FlashTime" align="middle">
-			<param name="movie" value="http://47.94.235.135/wp-content/plugins/wp-flashtime-widget/flash/wp-clock-20.swf" />
-			<param name="menu" value="false" />
-			<param name="wmode" value="transparent" />
-			<param name="allowscriptaccess" value="always" />
-			<!--[if !IE]>-->
-			<object type="application/x-shockwave-flash" data="http://47.94.235.135/wp-content/plugins/wp-flashtime-widget/flash/wp-clock-20.swf" width="140" height="40" align="middle">
-			<param name="menu" value="false" />
-			<param name="wmode" value="transparent" />
-			<param name="allowscriptaccess" value="always" />
-			</object>
-			<!--<![endif]-->
-			</object>
-		</center>	        
-		</aside>
-<object type="application/x-shockwave-flash" style="outline:none;" data="http://cdn.abowman.com/widgets/hamster/hamster.swf?up_bodyColor=f0e9cc&amp;up_feetColor=D4C898&amp;up_eyeColor=000567&amp;up_wheelSpokeColor=DEDEDE&amp;up_wheelColor=FFFFFF&amp;up_waterColor=E0EFFF&amp;up_earColor=b0c4de&amp;up_wheelOuterColor=FF4D4D&amp;up_snoutColor=F7F4E9&amp;up_bgColor=F0E4E4&amp;up_foodColor=cba920&amp;up_wheelCenterColor=E4EB2F&amp;up_tailColor=E6DEBE&amp;" width="200" height="160">
-<param name="movie" value="http://cdn.abowman.com/widgets/hamster/hamster.swf?up_bodyColor=f0e9cc&amp;up_feetColor=D4C898&amp;up_eyeColor=000567&amp;up_wheelSpokeColor=DEDEDE&amp;up_wheelColor=FFFFFF&amp;up_waterColor=E0EFFF&amp;up_earColor=b0c4de&amp;up_wheelOuterColor=FF4D4D&amp;up_snoutColor=F7F4E9&amp;up_bgColor=F0E4E4&amp;up_foodColor=cba920&amp;up_wheelCenterColor=E4EB2E&amp;up_tailColor=E6DEBE&amp;">
-<param name="AllowScriptAccess" value="always">
-<param name="wmode" value="opaque"></object>
+		<br>
                 <a href="http://www.louisvv.com/">火眼征信大数据工程师闫大佬</a>
                 {% block right %}
                 {% endblock %}
@@ -414,7 +399,7 @@
             <div class="menu">
                 <ul>
                     <li><a href="/me">About Me</a></li>
-                    <!--<li><a href="https://github.com/redhadoopwhy/blog">GitHub</a></li>-->
+                    <li><a href="https://github.com/redhadoopwhy">GitHub</a></li>
                     <li><a>京ICP备16062923号</a></li>
                     <li><a>Copyright&copy;why 2016 - 2017  All rights reserved.</a></li>
                     <li><a>托管于阿里云主机&七牛云存储</a></li>
@@ -523,6 +508,11 @@
       }
    }
 /* 小火箭 */
+
 </script>
+<!--鼠标点击有爱心 -->
+<script type="text/javascript" src="http://img.whysdomain.com/static/love.js"></script>
+<!--背景悬浮东西 -->
+<script type="text/javascript" src="http://img.whysdomain.com/static/canvas-nest.min.js"></script>
 </body>
 </html>
